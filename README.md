@@ -317,19 +317,6 @@ Key Components:
 │   └── load_checkpoint()                   # Checkpoint loading
 ```
 
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{qlocaladam2026,
-  title={Q-LocalAdam: Memory-Efficient Federated Learning via INT8 Quantized Optimizer States},
-  author={Your Name},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2026}
-}
-```
-
 ## License
 
 MIT License - See LICENSE file for details
@@ -341,12 +328,6 @@ Contributions welcome! Please:
 2. Create a feature branch
 3. Add tests if applicable
 4. Submit a pull request
-
-## Contact
-
-For questions or issues:
-- Open a GitHub issue
-- Email: your.email@example.com
 
 ## Acknowledgments
 
