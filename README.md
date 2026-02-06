@@ -199,7 +199,7 @@ rm results/cifar100/checkpoint.json
 | Vanilla-ClientAdam (Non-IID) | ~68% | 50 MB | 0.5 |
 | Q-LocalAdam | ~66% | 12 MB | 0.5 |
 
-**Memory Reduction**: 4× (50 MB → 12 MB)  
+**Memory Reduction**: 3.37× (50 MB → 12 MB)  
 **Accuracy Drop**: <2% under extreme Non-IID
 
 ## Expected Results (CIFAR-100)
