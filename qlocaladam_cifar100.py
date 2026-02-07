@@ -699,7 +699,7 @@ def plot_all_results(all_results):
     fig3.savefig("figures/cifar100/3_naive_comparison.pdf", bbox_inches="tight")
     plt.close(fig3)
 
-    print("✓ Saved 3 publication-quality figures to figures/cifar100/\n")
+    print(" Saved 3 figures to figures/cifar100/\n")
 
 
 def create_summary_table(all_results):
@@ -717,7 +717,7 @@ def create_summary_table(all_results):
     df = pd.DataFrame(data)
     os.makedirs("results/cifar100", exist_ok=True)
     df.to_csv("results/cifar100/summary_table.csv", index=False)
-    print("\n✓ Saved: results/cifar100/summary_table.csv")
+    print("\n Saved: results/cifar100/summary_table.csv")
     print("\n" + df.to_string(index=False))
 
 
@@ -744,7 +744,7 @@ def save_checkpoint(all_results, next_experiment_idx):
     }
     with open(CHECKPOINT_PATH, "w") as f:
         json.dump(payload, f, cls=NumpyEncoder, indent=4)
-    print(f"💾 Checkpoint saved at experiment index {next_experiment_idx} -> {CHECKPOINT_PATH}")
+    print(f" Checkpoint saved at experiment index {next_experiment_idx} -> {CHECKPOINT_PATH}")
 
 
 def load_checkpoint():
@@ -754,7 +754,7 @@ def load_checkpoint():
         payload = json.load(f)
     all_results = payload.get("all_results", {})
     next_idx = payload.get("next_experiment_idx", 0)
-    print(f"🔁 Resuming from checkpoint: next_experiment_idx={next_idx}")
+    print(f" Resuming from checkpoint: next_experiment_idx={next_idx}")
     return all_results, next_idx
 
 
@@ -762,10 +762,10 @@ if __name__ == "__main__":
     print("="*70)
     print("CIFAR-100: COMPLETE ABLATION SUITE - 11 EXPERIMENTS (RESUMABLE)")
     print("="*70)
-    print("✅ Includes IID baseline")
-    print("✅ 120 rounds per experiment")
-    print("✅ All ablation studies")
-    print("✅ Checkpointing enabled (resume after crash)")
+    print(" Includes IID baseline")
+    print(" 120 rounds per experiment")
+    print(" All ablation studies")
+    print(" Checkpointing enabled (resume after crash)")
     print("="*70)
 
     experiments = [
@@ -907,20 +907,20 @@ if __name__ == "__main__":
     if all_results is None:
         all_results = {}
         start_idx = 0
-        print("🆕 No checkpoint found. Starting from experiment 1.")
+        print(" No checkpoint found. Starting from experiment 1.")
     else:
-        print(f"🔁 Loaded existing results for {len(all_results)} experiments.")
+        print(f" Loaded existing results for {len(all_results)} experiments.")
 
     num_experiments = len(experiments)
 
     for i in range(start_idx, num_experiments):
         exp = experiments[i]
         exp_id = i + 1
-        print(f"\n🚀 Experiment {exp_id}/{num_experiments}: {exp['desc']}")
+        print(f"\n Experiment {exp_id}/{num_experiments}: {exp['desc']}")
         key = exp["key"]
 
         if key in all_results:
-            print(f"⏩ Skipping {key} (already in all_results from checkpoint).")
+            print(f" Skipping {key} (already in all_results from checkpoint).")
         else:
             res = run_federated_experiment(**exp["kwargs"])
             all_results[key] = res
@@ -934,26 +934,26 @@ if __name__ == "__main__":
     json_path = "results/cifar100/complete_ablation_results.json"
     with open(json_path, "w") as f:
         json.dump(all_results, f, cls=NumpyEncoder, indent=4)
-    print(f"✓ Saved: {json_path}")
+    print(f" Saved: {json_path}")
 
     try:
         plot_all_results(all_results)
     except Exception as e:
-        print(f"⚠️ Error generating plots: {e}")
+        print(f" Error generating plots: {e}")
 
     try:
         create_summary_table(all_results)
     except Exception as e:
-        print(f"⚠️ Error generating summary table: {e}")
+        print(f" Error generating summary table: {e}")
 
     print("\n" + "="*70)
-    print("✅ CIFAR-100: ALL 11 EXPERIMENTS COMPLETE!")
+    print(" CIFAR-100: ALL 11 EXPERIMENTS COMPLETE!")
     print("="*70)
 
     total_time = sum(r['total_time_hours'] for r in all_results.values())
     print(f"\nTotal runtime: {total_time:.2f} hours")
 
-    print("\n📊 KEY RESULTS (CIFAR-100):")
+    print("\n KEY RESULTS (CIFAR-100):")
     print("-" * 70)
     iid_acc = all_results['vanilla_iid']['final_accuracy']
     noniid_acc = all_results['vanilla_noniid']['final_accuracy']
@@ -977,4 +977,4 @@ if __name__ == "__main__":
             os.remove(CHECKPOINT_PATH)
             print(f"🧹 Removed checkpoint: {CHECKPOINT_PATH}")
     except Exception as e:
-        print(f"⚠️ Could not remove checkpoint: {e}")
+        print(f" Could not remove checkpoint: {e}")
