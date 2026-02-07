@@ -634,7 +634,7 @@ def run_federated_experiment(
     results["avg_total_opt_mb"] = float(np.mean(results["total_optimizer_memory_mb"]))
     results["total_time_hours"] = (time.time() - start_time) / 3600
 
-    print(f"✓ Completed: Final={results['final_accuracy']:.2f}%, "
+    print(f" Completed: Final={results['final_accuracy']:.2f}%, "
           f"Best={results['best_accuracy']:.2f}%, "
           f"Time={results['total_time_hours']:.2f}h\n")
 
@@ -975,6 +975,6 @@ if __name__ == "__main__":
     try:
         if os.path.exists(CHECKPOINT_PATH):
             os.remove(CHECKPOINT_PATH)
-            print(f"🧹 Removed checkpoint: {CHECKPOINT_PATH}")
+            print(f" Removed checkpoint: {CHECKPOINT_PATH}")
     except Exception as e:
         print(f" Could not remove checkpoint: {e}")
