@@ -626,7 +626,7 @@ def run_federated_experiment(
     results["avg_total_opt_mb"] = float(np.mean(results["total_optimizer_memory_mb"]))
     results["total_time_hours"] = (time.time() - start_time) / 3600
 
-    print(f"✓ Completed: Final={results['final_accuracy']:.2f}%, "
+    print(f" Completed: Final={results['final_accuracy']:.2f}%, "
           f"Best={results['best_accuracy']:.2f}%, "
           f"Time={results['total_time_hours']:.2f}h\n")
 
@@ -691,7 +691,7 @@ def plot_all_results(all_results):
     fig3.savefig("figures/3_naive_comparison.pdf", bbox_inches="tight")
     plt.close(fig3)
 
-    print("✓ Saved 3 publication-quality figures to figures/\n")
+    print(" Saved 3 publication-quality figures to figures/\n")
 
 
 def create_summary_table(all_results):
@@ -708,7 +708,7 @@ def create_summary_table(all_results):
 
     df = pd.DataFrame(data)
     df.to_csv("results/summary_table.csv", index=False)
-    print("\n✓ Saved: results/summary_table.csv")
+    print("\n Saved: results/summary_table.csv")
     print("\n" + df.to_string(index=False))
 
 
@@ -762,7 +762,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 4/11: Naive INT8 (Linear Quantization)")
+    print("\n Experiment 4/11: Naive INT8 (Linear Quantization)")
     all_results["naive_int8"] = run_federated_experiment(
         method_name="NaiveINT8",
         num_rounds=120,
@@ -849,7 +849,7 @@ if __name__ == "__main__":
     json_path = "results/complete_ablation_results.json"
     with open(json_path, "w") as f:
         json.dump(all_results, f, cls=NumpyEncoder, indent=4)
-    print(f"✓ Saved: {json_path}")
+    print(f" Saved: {json_path}")
 
     try:
         plot_all_results(all_results)
