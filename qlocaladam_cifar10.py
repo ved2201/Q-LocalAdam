@@ -691,7 +691,7 @@ def plot_all_results(all_results):
     fig3.savefig("figures/3_naive_comparison.pdf", bbox_inches="tight")
     plt.close(fig3)
 
-    print(" Saved 3 publication-quality figures to figures/\n")
+    print(" Saved 3  figures to figures/\n")
 
 
 def create_summary_table(all_results):
