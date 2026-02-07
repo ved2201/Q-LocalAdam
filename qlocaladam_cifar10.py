@@ -25,7 +25,7 @@ if torch.cuda.is_available():
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.backends.cudnn.allow_tf32 = True
     torch.backends.cudnn.benchmark = True
-    print("✓ TF32 enabled for faster training\n")
+    print(" TF32 enabled for faster training\n")
 
 os.makedirs("results", exist_ok=True)
 os.makedirs("figures", exist_ok=True)
