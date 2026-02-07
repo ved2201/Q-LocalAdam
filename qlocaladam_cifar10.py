@@ -727,14 +727,14 @@ if __name__ == "__main__":
     print("="*70)
     print("COMPLETE ABLATION SUITE - 11 EXPERIMENTS")
     print("="*70)
-    print("✅ Includes IID baseline")
-    print("✅ 120 rounds per experiment")
-    print("✅ All ablation studies")
+    print(" Includes IID baseline")
+    print(" 120 rounds per experiment")
+    print(" All ablation studies")
     print("="*70)
 
     all_results = {}
 
-    print("\n🚀 Experiment 1/11: Vanilla-ClientAdam (IID)")
+    print("\n Experiment 1/11: Vanilla-ClientAdam (IID)")
     all_results["vanilla_iid"] = run_federated_experiment(
         method_name="VanillaClientAdam_IID",
         num_rounds=120,
@@ -743,7 +743,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 2/11: Vanilla-ClientAdam (α=0.1, Extreme Non-IID)")
+    print("\n Experiment 2/11: Vanilla-ClientAdam (α=0.1, Extreme Non-IID)")
     all_results["vanilla_noniid"] = run_federated_experiment(
         method_name="VanillaClientAdam_NonIID",
         num_rounds=120,
@@ -752,7 +752,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 3/11: Q-LocalAdam (α=0.1, B=64)")
+    print("\n Experiment 3/11: Q-LocalAdam (α=0.1, B=64)")
     all_results["qlocaladam"] = run_federated_experiment(
         method_name="Q-LocalAdam",
         num_rounds=120,
@@ -772,7 +772,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 5/11: Component Ablation (Momentum Only)")
+    print("\n Experiment 5/11: Component Ablation (Momentum Only)")
     all_results["momentum_only"] = run_federated_experiment(
         method_name="QLocalAdam_MomentumOnly",
         num_rounds=120,
@@ -782,7 +782,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 6/11: Component Ablation (Variance Only)")
+    print("\n Experiment 6/11: Component Ablation (Variance Only)")
     all_results["variance_only"] = run_federated_experiment(
         method_name="QLocalAdam_VarianceOnly",
         num_rounds=120,
@@ -792,7 +792,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 7/11: Non-IID Robustness (α=0.5, Moderate)")
+    print("\n Experiment 7/11: Non-IID Robustness (α=0.5, Moderate)")
     all_results["noniid_alpha05"] = run_federated_experiment(
         method_name="Q-LocalAdam",
         num_rounds=120,
@@ -802,7 +802,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 8/11: Non-IID Robustness (α=1.0, Mild)")
+    print("\n Experiment 8/11: Non-IID Robustness (α=1.0, Mild)")
     all_results["noniid_alpha10"] = run_federated_experiment(
         method_name="Q-LocalAdam",
         num_rounds=120,
@@ -812,7 +812,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 9/11: Block Size Ablation (B=32)")
+    print("\n Experiment 9/11: Block Size Ablation (B=32)")
     all_results["block_32"] = run_federated_experiment(
         method_name="Q-LocalAdam",
         num_rounds=120,
@@ -822,7 +822,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 10/11: Block Size Ablation (B=128)")
+    print("\n Experiment 10/11: Block Size Ablation (B=128)")
     all_results["block_128"] = run_federated_experiment(
         method_name="Q-LocalAdam",
         num_rounds=120,
@@ -832,7 +832,7 @@ if __name__ == "__main__":
         seed=42
     )
 
-    print("\n🚀 Experiment 11/11: Learning Rate Sensitivity (lr=5e-4)")
+    print("\n Experiment 11/11: Learning Rate Sensitivity (lr=5e-4)")
     all_results["lr_5e4"] = run_federated_experiment(
         method_name="Q-LocalAdam",
         num_rounds=120,
@@ -854,21 +854,21 @@ if __name__ == "__main__":
     try:
         plot_all_results(all_results)
     except Exception as e:
-        print(f"⚠️ Error generating plots: {e}")
+        print(f" Error generating plots: {e}")
 
     try:
         create_summary_table(all_results)
     except Exception as e:
-        print(f"⚠️ Error generating summary table: {e}")
+        print(f" Error generating summary table: {e}")
 
     print("\n" + "="*70)
-    print("✅ ALL 11 EXPERIMENTS COMPLETE!")
+    print(" ALL 11 EXPERIMENTS COMPLETE!")
     print("="*70)
 
     total_time = sum(r['total_time_hours'] for r in all_results.values())
     print(f"\nTotal runtime: {total_time:.2f} hours")
 
-    print("\n📊 KEY RESULTS:")
+    print("\n KEY RESULTS:")
     print("-" * 70)
 
     iid_acc = all_results['vanilla_iid']['final_accuracy']
